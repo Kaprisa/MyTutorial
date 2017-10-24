@@ -1,0 +1,67 @@
+.page
+	h1.title Условия
+	a.examples__btn Показать примеры
+	.page__inner
+		.page-section
+			strong.page-section__title Операторы сравнения: 
+			span =, !=, ^=, <>, <, >, >=, <=
+		.page-section
+			ul.def-list
+				li.def-list__item
+					strong ANY, SOME
+					|  - возвращает true, если операция истинна для одного или более переданных значений, иначе false
+				li.def-list__item
+					strong ALL
+					|  - возвращает true, если операция истинна для всех переданных значений, иначе false
+				li.def-list__item
+					strong [ NOT ] IN
+					|  - вхождение в перечисленный диапазон значений
+				li.def-list__item
+					strong LIKE
+					|  - Позволяет проверить строку на соответствие шаблону. Знак «_» соответствует любому одному символу. Знак «%» соответствует любой строке, в том числе пустой
+				li.def-list__item
+					strong EXISTS
+					|  - Возвращает true, если результат подзапроса содержит хотя бы одну запись. Иначе false
+				li.def-list__item
+					strong BETWEEN
+					|  - проверка вхождения значения в переданный диапазон
+	.examples
+		a.examples__btn Вернуться к уроку
+		.examples__item
+			.examples__task Если среди сотрудников есть такие, кто получает зарплату 100000, то вывести их имена, иначе выбрать всех сотрудников, зарплата которых равна 30000, 50000 или 70000
+			.sql-code.examples__solution
+				span.sql-code__keyword IF EXISTS 
+				span.sql-code__oper ( 
+				span.sql-code__keyword SELECT
+				|  ID 
+				span.sql-code__keyword FROM 
+				| Employees 
+				span.sql-code__keyword WHERE
+				|  Salary 
+				span.sql-code__oper = 
+				| 100000
+				span.sql-code__oper  )
+				br
+				span.sql-code__keyword SELECT
+				|  Name 
+				span.sql-code__keyword FROM
+				|  Employees 
+				br
+				span.sql-code__keyword WHERE 
+				| Salary 
+				span.sql-code__oper = 
+				| 100000
+				br
+				span.sql-code__keyword ELSE
+				br
+				span.sql-code__keyword SELECT
+				|  Name 
+				span.sql-code__keyword FROM
+				|  Employees 
+				br
+				span.sql-code__keyword WHERE 
+				| Salary 
+				span.sql-code__keyword IN 
+				span.sql-code__oper ( 
+				| 30000, 50000, 70000
+				span.sql-code__oper  )

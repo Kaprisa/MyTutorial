@@ -1,0 +1,25 @@
+.controls
+	position: absolute
+	top: 50%
+	margin-top: -15px
+	left: 0
+	right: 0
+	display: flex
+	justify-content: space-between
+	margin: 0 7%
+	&__item
+		display: block
+		width: 30px
+		height: 30px
+		border: 10px solid $accent-color
+		border-radius: 5px
+		border-bottom-color: transparent
+		border-right-color: transparent
+		opacity: .5
+		transition: opacity .3s ease
+		&:hover
+			opacity: 1
+		&:first-child
+			transform: rotate(-45deg)
+		&:last-child
+			transform: rotate(135deg)

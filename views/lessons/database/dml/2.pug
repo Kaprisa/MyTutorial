@@ -1,0 +1,77 @@
+.page
+	h1.title Операторы работы с множествами
+	a.examples__btn Показать примеры
+	.page__inner
+		.info Выбираемые столбцы таблиц должны совпадать
+		.page-section
+			strong.page-section__title Операторы:
+			div
+				ul.def-list
+					li.def-list__item
+						strong UNION ALL
+						|  - Объединение запросов
+					li.def-list__item
+						strong UNION
+						|  - Объединение запросов, а затем выбор из них уникальных.
+					li.def-list__item
+						strong INTERSECT
+						|  - Пересечение запросов
+					li.def-list__item
+						strong MINUS
+						|  - Исключение результатов второй выборки из результатов первой
+		.page-section
+			strong.page-section__title Синтаксис:
+			.sql-code
+				span.sql-code__keyword SELECT 
+				|  * 
+				span.sql-code__keyword FROM
+				|  table1
+				br
+				span.sql-code__keyword UNION 
+				span.sql-code__brct [ 
+				span.sql-code__keyword  ALL 
+				span.sql-code__brct  ] 
+				span.sql-code__oper  || 
+				span.sql-code__keyword INTERSECT 
+				span.sql-code__oper  || 
+				span.sql-code__keyword MINUS 
+				br
+				span.sql-code__keyword SELECT 
+				|  * 
+				span.sql-code__keyword FROM
+				|  table2
+	.examples
+		a.examples__btn Вернуться к уроку
+		.examples__item
+			.examples__task Выбрать города, в которых проживают сотрудники и клиенты из России, отсортировать по городам
+			.sql-code.examples__solution
+				span.sql-code__keyword SELECT 
+				|  City 
+				span.sql-code__keyword FROM
+				|  Employees
+				br
+				span.sql-code__keyword UNION 
+				br
+				span.sql-code__keyword SELECT 
+				|   City 
+				span.sql-code__keyword FROM
+				|   Customers 
+				span.sql-code__keyword WHERE
+				|  Country = 'Россия'
+				br
+				span.sql-code__keyword ORDER BY
+				|  City
+		.examples__item
+			.examples__task Выбрать города из таюлицы Cities, в которых не проживает ни один сотрудник
+			.sql-code.examples__solution
+				span.sql-code__keyword SELECT 
+				| Name 
+				span.sql-code__keyword FROM
+				|  Cities
+				br
+				span.sql-code__keyword MINUS 
+				br
+				span.sql-code__keyword SELECT 
+				|   City 
+				span.sql-code__keyword FROM
+				|   Employees 

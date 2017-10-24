@@ -1,0 +1,9 @@
+extends layout
+
+block content
+	include partials/panel
+	main.lesson(style="background-image: url(/public/images/bg7.jpg)")
+		include components/controls
+		section.lesson__inner
+			include lessons/assembler/basic/sections
+		include components/pagination

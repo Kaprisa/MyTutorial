@@ -1,0 +1,23 @@
+.page
+	h1.title WITH
+	.page__inner
+		.page-section
+			strong.page-section__title Определение:
+			|  Конструкция, позволяющая создать именованный подзапрос и использовать его в основном запросе.
+		.page-section
+			strong.page-section__title Синтаксис:
+			.sql-code
+				span.sql-code__keyword WITH 
+				| subquery_name 
+				span.sql-code__keyword AS 
+				| ( subquery ) 
+				br
+				| query
+		.page-section
+			strong.page-section__title Комментарий:
+			div
+				ul.info-list
+					li.info-list__item Можно использовать несколько раз в основном запросе
+					li.info-list__item Oracle будет воспринимать этот подзапрос как представление ( View ) или временную таблицу
+					li.info-list__item Имя подзапроса видно в любом месте основного запроса
+					li.info-list__item Можно организовать рекурсию

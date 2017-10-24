@@ -1,0 +1,6 @@
+- const card = { "id": 1, "name": "Базы данных", "img": "database1" }
+article.card
+	h5.card__name= card.name
+	img.card__img(src=`/public/images/icons/${card.img}.svg`)
+	//a.card__link(href=`/lessons/${card.id}`) Перейти к урокам
+	a.card__link(href=`/lesson.html`) Перейти к урокам

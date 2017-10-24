@@ -1,0 +1,85 @@
+.page
+	h1.title Основы синтаксиса
+	a.examples__btn Показать примеры
+	.page__inner
+		.page-section
+			strong.page-section__title Секции:
+			ul.def-list
+				li.def-list__item
+					strong .data
+					|  - для объявления инициализированных данных и констант.
+				li.def-list__item
+					strong .bss
+					|  - для объявления переменных.
+				li.def-list__item
+					strong .text
+					|  - для кода
+		.page-section
+			strong.page-section__title Комментарии:
+			p Начинаются со знака точки с запятой ( ; ). Могут находиться в любом месте прграммы и содержать что угодно.
+		.page-section
+			strong.page-section__title Состав инструкции:
+			.code.asm-code 
+				span.asm-code__label [ метка ] 
+				span.asm-code__keyword имя_команды 
+				| [ операнды ]  
+				span.asm-code__comment [ ;комментарий ]
+		.page-section
+			strong.page-section__title Компиляция, без использования gcc:
+			.code.command-code
+				.code__str nasm -f elf32 your_file.asm
+				.code__str ld -m elf_i386 -s -o your_file your_file.o
+		.page-section
+			strong.page-section__title Компиляция, с использованием gcc:
+			.code.command-code
+				span.code__str nasm -f elf your_file.asm
+				span.code__str gcc -m32 -o your_file your_file.o
+	.examples
+		a.examples__btn Вернуться к уроку
+		.examples__item
+			.examples__task Вывести сообщение 'Hello world!'
+			.code.asm-code.examples__solution
+				.asm-code__section
+					span.asm-code__str 
+						span.asm-code__keyword section
+						| 	 .text
+					span.asm-code__str 
+						span.asm-code__keyword global 
+						| _start     
+						span.asm-code__comment ;Должно быть объявлено для линковки (ld)
+				.asm-code__section
+					span.asm-code__str _start:
+						span.asm-code__comment ;точка входа
+					span.asm-code__str 
+						span.asm-code__keyword mov
+						|  edx, len     
+						span.asm-code__comment ;длина сообщения
+					span.asm-code__str 
+						span.asm-code__keyword mov
+						|  ecx, msg     
+						span.asm-code__comment ;сообщение
+					span.asm-code__str 
+						span.asm-code__keyword mov
+						|  ebx, 1       
+						span.asm-code__comment ;stdout
+					span.asm-code__str 
+						span.asm-code__keyword mov
+						|  eax, 4       
+						span.asm-code__comment ;sys_write
+					span.asm-code__str int	0x80        
+						span.asm-code__comment ;вызов ядра ОС
+				.asm-code__section
+					span.asm-code__str 
+						span.asm-code__keyword mov
+						|  eax, 1       
+						span.asm-code__comment ;sys_exit
+					span.asm-code__str int	0x80        
+						span.asm-code__comment ;вызов ядра ОС
+				.asm-code__section
+					span.asm-code__str 
+						span.asm-code__keyword section
+						| 	 .data
+					span.asm-code__str msg db 'Hello, world!', 0xa  
+						span.asm-code__comment ;инициализация строки
+					span.asm-code__str len equ $ - msg     
+						span.asm-code__comment ;длина строки

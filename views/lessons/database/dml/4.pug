@@ -1,0 +1,61 @@
+.page
+	h1.title Аггрегатные функции
+	a.examples__btn Показать примеры
+	.page__inner
+		.info Могут быть использованы только в секциях SELECT, HAVING, ORDER BY
+		.page-section
+			ul.def-list
+				li.def-list__item
+					strong SUM
+					|  - сумма
+				li.def-list__item
+					strong MIN
+					|  - минимальное значение
+				li.def-list__item
+					strong MAX
+					|  - максимальное значение
+				li.def-list__item
+					strong COUNT
+					|  - колличество результатов
+				li.def-list__item
+					strong AVG
+					|  - среднее значение
+	.examples
+		a.examples__btn Вернуться к уроку
+		.examples__item
+			.examples__task Найти сумму денег, которую необходимо выплатить всем сотрудникам за месяц работы
+			.sql-code.examples__solution
+				span.sql-code__keyword SELECT SUM 
+				span.sql-code__oper ( 
+				|  Salary 
+				span.sql-code__oper ) 
+				span.sql-code__keyword FROM
+				|  Employees
+		.examples__item
+			.examples__task Выбрать товар с максимальным рейтингом. Рейтинг товара найти как среднее значение оценок в отзывах ( таблица Reviews )
+			.sql-code.examples__solution
+				//span.sql-code__keyword SELECT MAX 
+				span.sql-code__keyword SELECT 
+				//span.sql-code__oper ( 
+				| 
+				span.sql-code__keyword Avg  
+				span.sql-code__oper ( 
+				|  R.Rating 
+				span.sql-code__oper )
+				|  rating, P.Name 
+				//span.sql-code__oper ) 
+				span.sql-code__keyword FROM
+				|  Reviews R 
+				br
+				span.sql-code__keyword JOIN  
+				| Products P 
+				span.sql-code__keyword ON 
+				| R.ProductID = P.ID
+				br
+				span.sql-code__keyword HAVING 
+				span.sql-code__oper ( 
+				span.sql-code__keyword MAX 
+				span.sql-code__oper ( 
+				| rating 
+				span.sql-code__oper ) 
+				span.sql-code__oper ) 

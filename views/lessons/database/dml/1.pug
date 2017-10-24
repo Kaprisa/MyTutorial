@@ -1,0 +1,98 @@
+.page
+	h1.title SELECT
+	.page__inner
+		a.examples__btn Показать примеры
+		.page-section
+			strong.page-section__title Определение:
+			|  Выборка данных
+		.page-section
+			strong.page-section__title Синтаксис:
+			.sql-code
+				span.sql-code__keyword SELECT 
+				span.sql-code__brct [ 
+				span.sql-code__keyword  ALL 
+				span.sql-code__oper  || 
+				span.sql-code__keyword  DISTINCT 
+				span.sql-code__brct  ] 
+				|  < *  
+				span.sql-code__oper || 
+				| ..columns_names > 
+				span.sql-code__keyword FROM
+				|  table_name
+				br
+				span.sql-code__brct [ 
+				span.sql-code__keyword WHERE
+				|  condition
+				span.sql-code__brct  ]
+				br
+				span.sql-code__brct [ 
+				span.sql-code__keyword ORDER BY
+				|  < ..columns > 
+				span.sql-code__brct [ 
+				span.sql-code__keyword  ASC 
+				span.sql-code__oper  || 
+				span.sql-code__keyword  DESC 
+				span.sql-code__brct  ] 
+				span.sql-code__brct  ]
+		.page-section
+			strong.page-section__title Комментарий:
+			div
+				ul.def-list
+					li.def-list__item
+						strong *
+						|  - выбрать все столбцы
+					li.def-list__item
+						strong ALL
+						|  - выбрать все записи
+					li.def-list__item
+						strong DISTINCT
+						|  - выбрать только уникальные записи
+					li.def-list__item
+						strong GROUP BY
+						| - группировка
+					li.def-list__item
+						strong ORDER BY
+						|  - Порядок вывода (По умолчанию ASC)
+						ul.def-list__sublist
+							li.def-list__item
+								strong ASC
+								| - По возрастанию
+							li.def-list__item
+								strong DESC
+								|  - По убыванию
+	.examples
+		a.examples__btn Вернуться к уроку
+		.examples__item
+			.examples__task Выбрать всех сотрудников с зарплатой более 30000 рублей
+			.sql-code.examples__solution
+				span.sql-code__keyword SELECT 
+				|  *  
+				span.sql-code__keyword FROM 
+				|  Employees 
+				br
+				span.sql-code__keyword WHERE 
+				|  Salary 
+				span.sql-code__oper >  
+				|  30000
+		.examples__item
+			.examples__task Выбрать полные имена ( имя + фамилия ) сотрудников, у которых фамилия содержит букву 'а' и зарплата менее 100000. Отсортировать результаты в порядке убывания зарплаты
+			.sql-code.examples__solution
+				span.sql-code__keyword SELECT 
+				|  ( first_name 
+				span.sql-code__oper ||' '|| 
+				|  last_name ) full_name 
+				span.sql-code__keyword FROM 
+				|  Employees 
+				br
+				span.sql-code__keyword WHERE 
+				|  Salary 
+				span.sql-code__oper <  
+				|  100000 
+				span.sql-code__keyword AND 
+				|  last_name 
+				span.sql-code__keyword LIKE 
+				|  '%а%'
+				br
+				span.sql-code__keyword ORDER BY 
+				|  Salary 
+				span.sql-code__keyword DESC 

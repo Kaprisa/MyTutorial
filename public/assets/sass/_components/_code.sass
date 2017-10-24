@@ -1,0 +1,49 @@
+.sql-code
+	border: 1px solid rgba($foreground-color, .2)
+	padding: 10px
+	font-size: 16px
+	word-spacing: 4px
+	white-space: nowrap
+	&__keyword
+		text-transform: uppercase
+		color: $sql-keyword-color
+	&__brct
+		color: $sql-brct-color
+	&__oper
+		color: $sql-oper-color
+
+.code
+	border: 1px solid rgba($foreground-color, .2)
+	padding: 10px
+	word-spacing: 4px
+	white-space: nowrap
+	font-size: 13px
+	&__str
+		display: block
+
+.command-code
+	background-color: #333
+	color: #fff
+	.code__str
+		&::before
+			content: '>'
+			margin-right: 10px
+			font-weight: bold
+
+.asm-code
+	background-color: #e3ffe7
+	font-size: 13px
+	&__section
+		margin-bottom: 15px
+	&__str
+		display: block
+		padding-left: 15px
+		&:first-child
+			padding-left: 0
+	&__keyword
+		color: $asm-keyword-color
+	&__comment
+		padding-left: 20px
+		color: $asm-comment-color
+	&__label
+		color: $asm-label-color

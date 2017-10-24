@@ -1,0 +1,7 @@
+extends layout
+
+block content
+	main.catalog(style="background-image: url(/public/images/bg2.jpg)")
+		- const cards = [{ "id": 1, "name": "Базы данных"}, { "id": 2, "name": "Математика" }]
+		each card in cards
+			include components/card

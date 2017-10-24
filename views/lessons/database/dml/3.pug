@@ -1,0 +1,60 @@
+.page
+	h1.title JOIN
+	a.examples__btn Показать примеры
+	.page__inner
+		.page-section
+			strong.page-section__title Определение:
+			|  Соединение таблиц
+		.page-section
+			strong.page-section__title Синтаксис:
+			.sql-code
+				span.sql-code__keyword SELECT 
+				|  * 
+				span.sql-code__keyword FROM
+				|  table1
+				br
+				span.sql-code__brct [ 
+				span.sql-code__keyword LEFT 
+				span.sql-code__oper || 
+				span.sql-code__keyword RIGHT 
+				span.sql-code__oper || 
+				span.sql-code__keyword FULL 
+				span.sql-code__brct ] 
+				span.sql-code__keyword JOIN 
+				|  table2 
+				span.sql-code__keyword ON 
+				|  condition
+		.page-section
+			strong.page-section__title Комментарий:
+			div
+				ul.def-list
+					li.def-list__item
+						strong LEFT
+						|  - выбрать все записи из левой таблицы, а из правой только те, что удовлетворяют условию.
+					li.def-list__item
+						strong RIGHT
+						|  - выбрать все записи из правой таблицы, а из левой только те, что удовлетворяют условию.
+					li.def-list__item
+						strong FULL
+						|  - выбрать все записи из двух таблиц с NULL — значениями в месте, где условие объединения не выполняется.
+	.examples
+		a.examples__btn Вернуться к уроку
+		.examples__item
+			.examples__task Выбрать имена курьеров, которые доствляли заказы, состоящие из 3 и более товаров
+			.sql-code.examples__solution
+				span.sql-code__keyword SELECT 
+				|  first_name 
+				span.sql-code__keyword FROM
+				|  Employees
+				br
+				span.sql-code__keyword JOIN 
+				|  Orders 
+				span.sql-code__keyword ON 
+				|  Employees.ID 
+				span.sql-code__oper = 
+				|  Orders.EmployeeID
+				br
+				span.sql-code__keyword WHERE 
+				|  Orders.ProdutCount 
+				span.sql-code__oper >= 
+				|  3
